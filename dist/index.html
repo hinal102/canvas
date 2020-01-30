@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <title>cardsplug</title>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <meta name="robots" content="noindex, nofollow">
+      <meta name="googlebot" content="noindex, nofollow">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+      <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+      <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.js"></script>
+      <link rel="stylesheet" href="./css/style.css" />
+   </head>
+   <body>
+      <!-- Content -->
+      <div style="padding:'50px 0px">
+         <!-- Content -->
+         <div class="container">
+            <div class="row" id="actions">
+               <div class="btn-group btn-group-crop">
+               </div>
+               <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                           <div className="container">
+                              <div class="row" id="actions">
+                                 <div class="col-lg-12 docs-buttons">
+                                    <div class="btn-group">
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                       <span class="fa fa-search-plus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                       <span class="fa fa-search-minus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                       <span class="fa fa-rotate-left"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary " data-method="rotate" data-option="45" title="Rotate Right">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-rotate-right"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="" data-dismiss="modal">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-trash"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                       <span class="docs-tooltip fa fa-check" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                       </span>
+                                       </button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div className="container">
+                              <div className="row" style="display:flex;">
+                                 <div class="col-md-6">
+                                    <div class="docs-preview clearfix">
+                                       <div class="img-preview preview-lg">
+                                          <div class="img-inner-preview">
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="img-container">
+                                       <img src="" id="image" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal fade" id="myModalFlag">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                           <div className="container">
+                              <div className="row">
+                                 <div class="col-lg-12 docs-buttons1">
+                                    <div class="btn-group">
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                       <span class="fa fa-search-plus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                       <span class="fa fa-search-minus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                       <span class="fa fa-rotate-left"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary " data-method="rotate" data-option="45" title="Rotate Right">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-rotate-right"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="" data-dismiss="modal">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-trash"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                       <span class="docs-tooltip fa fa-check" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                       </span>
+                                       </button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div className="container">
+                              <div className="row" style="display:flex;">
+                                 <div class="col-md-6">
+                                    <div class="docs-preview clearfix">
+                                       <div class="img-preview preview-lg">
+                                          <div class="img-inner-preview flag-preview">
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="img-container">
+                                       <img src="" id="image1" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal fade" id="myModalBadge">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                           <div className="container">
+                              <div className="row">
+                                 <div class="col-lg-12 docs-buttons2">
+                                    <div class="btn-group">
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                       <span class="fa fa-search-plus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                       <span class="fa fa-search-minus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                       <span class="fa fa-rotate-left"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary " data-method="rotate" data-option="45" title="Rotate Right">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-rotate-right"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="" data-dismiss="modal">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-trash"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                       <span class="docs-tooltip fa fa-check" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                       </span>
+                                       </button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div className="container">
+                              <div className="row" style="display:flex;">
+                                 <div class="col-md-6">
+                                    <div class="docs-preview clearfix">
+                                       <div class="img-preview preview-lg">
+                                          <div class="img-inner-preview badge-preivew">
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="img-container">
+                                       <img src="" id="image2" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- Show the cropped image in modal -->
+               <!-- <div class="fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                       
+                        <div class="modal-body"></div>
+                      
+                     </div>
+                  </div>
+                  </div> -->
+               <!-- /.modal -->
+               <!-- /.docs-buttons -->
+               <div class="col-md-3 docs-toggles">
+               </div>
+            </div>
+         </div>
+         <!-- Footer -->
+         <section class="headerTopWrapper">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="page-wrap">
+                        <div class="controls">
+                           <div id="canvas-wrap">
+                              <img src="./Nominated_TOTY.png " width="450px" height="600px" class="img-wrap" />
+                              <canvas id="imageCanvas"  class="imgcanvaswrap">
+                                 <canvas id="canvasID"></canvas>
+                              </canvas>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <form>
+                        <div class="row">
+                           <div class="form-group col-md-12">
+                              <label class="" for="inputImage">Upload Your Image</label>
+                              <input type="file" id="inputImage" class="form-control" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" data-toggle="modal" data-target="#myModal">
+                              <div class=" docs-cropped" id="getCroppedCanvasModal">
+                                 <div class="modal-body" id="mainimg"></div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <label for="pwd">Name</label>
+                              <input type="text" class="form-control" placeholder="YOUR NAME" id="name">
+                           </div>
+                           <div class="col-md-4">
+                              <label for="pwd">Rating</label>
+                              <input type="text" class="form-control" placeholder="99" id="rating">
+                           </div>
+                           <div class="col-md-4">
+                              <label for="pwd">Position</label>
+                              <input type="text" class="form-control" placeholder="CAM" id="position">
+                           </div>
+                           <br/><br/>
+                           <div class="form-group col-md-12">
+                              <label class="" for="inputImageFlag">Upload Your Flag</label>
+                              <input type="file" id="inputImageFlag" class="form-control" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" data-toggle="modal" data-target="#myModalFlag">
+                              <div class="fade docs-cropped" id="getCroppedCanvasModal1" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+                                 <div class="modal-dialog">
+                                    <div class="modal-content">
+                                       <div class="modal-body"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <label for="pwd">COUNTRY FLAG</label>
+                              <select id="dropdown">
+                                 <option value='' disabled="disabled" selected="selected">Please Select</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed2.jpg'class="abc">Option 1</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed1.jpg'>Option 2</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed3.jpg'>Option 3</option>
+                              </select>
+                           </div>
+                           <div class="form-group col-md-12">
+                              <label class="" for="inputImageBadge">Upload Your Badge</label>
+                              <input type="file" id="inputImageBadge" class="form-control" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" data-toggle="modal" data-target="#myModalBadge">
+                              <div class="fade docs-cropped" id="getCroppedCanvasModal2" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+                                 <div class="modal-dialog">
+                                    <div class="modal-content">
+                                       <div class="modal-body"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <label for="pwd">CLUB</label>
+                              <select id="dropdownclub">
+                                 <option value='' disabled="disabled" selected="selected">Please Select</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed2.jpg'class="abc">Option 1</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed1.jpg'>Option 2</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed3.jpg'>Option 3</option>
+                              </select>
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="99" id="pace">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="PAC" id="pacetext">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="99" id="shoot">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="SHO" id="shoottext">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="99" id="pass">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="PAS" id="passtext">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="99" id="dribbl">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="DRI" id="dribbltext">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="99" id="defend">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="DEF" id="defendtext">
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" class="form-control" placeholder="99" id="physical">
+                           </div>
+                           <div class="col-md-3" style="padding: 10px;">
+                              <input type="text" class="form-control" placeholder="PHY" id="physicaltext">
+                           </div>
+                           <div class="form-group col-md-12">
+                              <button type="submit" class="btn btn-warning form-control btn-padding">COMPLETE DESIGN</button>
+                           </div>
+                        </div>
+                  </div>
+                  </form>
+               </div>
+            </div>
+      </div>
+      </section>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js'></script>
+      <!-- TODO: Missing CoffeeScript 2 -->
+      <script src="canvas.js"></script>
+      <script src="script.js"></script>
+   </body>
+</html>
