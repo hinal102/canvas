@@ -208,7 +208,7 @@ window.onload = function() {
                 case 'getCroppedCanvas':
                     if (result) {
                         // Bootstrap's Modal
-                        $('#getCroppedCanvasModal').find('.modal-body').html(result);
+                        $('#getCroppedCanvasModal').find('.img-crop').html(result);
                         console.log(result);
                         var c=document.createElement("img");
                         c.src = result.toDataURL("image/png");
@@ -341,7 +341,7 @@ window.onload = function() {
                 case 'getCroppedCanvas':
                     if (result) {
                         // Bootstrap's Modal
-                        // $('#getCroppedCanvasModal1').modal().find('.modal-body').html(result);
+                        // $('#getCroppedCanvasModal1').modal().find('.img-crop').html(result);
 
                         //   if (!download.disabled) {
                         //       download.href = result.toDataURL(uploadedImageType);
@@ -471,7 +471,7 @@ window.onload = function() {
                 case 'getCroppedCanvas':
                     if (result) {
                         // Bootstrap's Modal
-                        // $('#getCroppedCanvasModal2').modal().find('.modal-body').html(result);
+                        // $('#getCroppedCanvasModal2').modal().find('.img-crop').html(result);
 
                         if (!download.disabled) {
                             download.href = result.toDataURL(uploadedImageType);

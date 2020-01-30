@@ -370,3 +370,12 @@ margin-right: auto;
   position: absolute;
   left: 0;
 }
+.img-crop{
+  overflow: hidden;
+  max-height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+.img-crop:empty{
+ max-height: auto;
+}
