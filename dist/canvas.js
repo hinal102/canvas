@@ -1,7 +1,12 @@
 var CVS = document.getElementById('imageCanvas'),
 ctx = CVS.getContext('2d');
+
+ctx1=document.getElementById('imgCanvas1').getContext('2d');
+ctx2=document.getElementById('imgCanvas2').getContext('2d');
+ctx3=document.getElementById('imgCanvas3').getContext('2d');
+
 var imageLoader = document.getElementById('inputImage');
-    imageLoader.addEventListener('change', handleImage, false);
+  imageLoader.addEventListener('change', handleImage, false);
 
 let imageObj = new Image();
 let imageObjClub = new Image();
@@ -10,13 +15,16 @@ let imageObjmain = new Image();
 CVS.width = 500;
 CVS.height = 600;
 
+
 function handleImage(e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
         img.onload = function(){
-         
-            ctx.drawImage(img,170,130,220,145);
+            ctx1.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
+            ctx2.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
+            ctx3.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
+
         }
         img.src = event.target.result;
     }
@@ -29,6 +37,8 @@ function sendToCanvas(ob) {
 
     img.onload = function() {
         ctx.drawImage(img, 0, 0, 450, 600);
+        // ctx1.drawImage(document.getElementById('imageCanvas'), 0, 0, 350, 145);
+
         ctx.font = ob.fontWeight + ' ' + ob.fontSize + ' ' + ob.fontFamily;
         ctx.textAlign = 'center';
         ctx.fillStyle = ob.color;
