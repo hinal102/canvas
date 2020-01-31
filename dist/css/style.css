@@ -379,3 +379,7 @@ margin-right: auto;
 .img-crop:empty{
  max-height: auto;
 }
+.imgmain{
+  width: 200px;
+  height: 200px;
+}
