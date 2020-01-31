@@ -1,15 +1,15 @@
 var CVS = document.getElementById('imageCanvas'),
-ctx = CVS.getContext('2d');
+    ctx = CVS.getContext('2d');
 
-ctx1=document.getElementById('imgCanvas1').getContext('2d');
-ctx2=document.getElementById('imgCanvas2').getContext('2d');
-ctx3=document.getElementById('imgCanvas3').getContext('2d');
-ctx4=document.getElementById('imgCanvas4').getContext('2d');
+ctx1 = document.getElementById('imgCanvas1').getContext('2d');
+ctx2 = document.getElementById('imgCanvas2').getContext('2d');
+ctx3 = document.getElementById('imgCanvas3').getContext('2d');
+ctx4 = document.getElementById('imgCanvas4').getContext('2d');
 
 
 var imageLoader = document.getElementById('inputImage');
-  imageLoader.addEventListener('change', handleImage, false);
-  
+imageLoader.addEventListener('change', handleImage, false);
+
 var imageLoader1 = document.getElementById('inputImageFlag');
 imageLoader1.addEventListener('change', handleImage1, false);
 
@@ -19,7 +19,7 @@ imageLoader2.addEventListener('change', handleImage2, false);
 
 // var cropimage = document.getElementById('cropimage');
 // cropimage.addEventListener('click', cropimage);
-$('#cropimage').on('click',function(e){
+$('#cropimage').on('click', function(e) {
     cropimage(e);
 })
 
@@ -30,48 +30,49 @@ let imageObjmain = new Image();
 CVS.width = 500;
 CVS.height = 600;
 
-function cropimage(e){
+function cropimage(e) {
     console.log("hello")
-            //  ctx.drawImage(document.getElementById('imgCanvas1'), 0, 0,450,800);
-             console.log("hello.....")
-    }
+    // ctx.drawImage(document.getElementById('imgCanvas1'), 0, 0,450,800);
 
-function handleImage2(e){
+    console.log("hello.....")
+}
+
+function handleImage2(e) {
     var reader = new FileReader();
-    reader.onload = function(event){
+    reader.onload = function(event) {
         var img2 = new Image();
-        img2.onload = function(){
-             ctx3.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
+        img2.onload = function() {
+            ctx3.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
         }
         img2.src = event.target.result;
     }
-    reader.readAsDataURL(e.target.files[0]);     
+    reader.readAsDataURL(e.target.files[0]);
 }
 
 
-function handleImage1(e){
+function handleImage1(e) {
     var reader = new FileReader();
-    reader.onload = function(event){
+    reader.onload = function(event) {
         var img1 = new Image();
-        img1.onload = function(){
-             ctx2.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
+        img1.onload = function() {
+            ctx2.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
         }
         img1.src = event.target.result;
     }
-    reader.readAsDataURL(e.target.files[0]);     
+    reader.readAsDataURL(e.target.files[0]);
 }
 
-function handleImage(e){
+function handleImage(e) {
 
     var reader = new FileReader();
-    reader.onload = function(event){
+    reader.onload = function(event) {
         var img = new Image();
-        img.onload = function(){
+        img.onload = function() {
             ctx1.drawImage(document.getElementById('imageCanvas'), 0, 0, 570, 600);
         }
         img.src = event.target.result;
     }
-    reader.readAsDataURL(e.target.files[0]);     
+    reader.readAsDataURL(e.target.files[0]);
 }
 
 
@@ -80,7 +81,7 @@ function sendToCanvas(ob) {
 
     img.onload = function() {
         ctx.drawImage(img, 0, 0, 450, 600);
-        
+
         // ctx1.drawImage(document.getElementById('imageCanvas'), 0, 0, 350, 145);
 
         ctx.font = ob.fontWeight + ' ' + ob.fontSize + ' ' + ob.fontFamily;
@@ -209,7 +210,6 @@ $('#dropdownclub').on("change", function() {
         ctx.drawImage(imageObj, 90, 245, 70, 50);
     };
 });
-
 
 
 

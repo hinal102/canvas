@@ -172,25 +172,25 @@ window.onload = function() {
 
                     break;
 
-                // case 'getCroppedCanvas':
-                //     try {
-                //         data.option = JSON.parse(data.option);
-                //     } catch (e) {
-                //         console.log(e.message);
-                //     }
+                    // case 'getCroppedCanvas':
+                    //     try {
+                    //         data.option = JSON.parse(data.option);
+                    //     } catch (e) {
+                    //         console.log(e.message);
+                    //     }
 
-                //     if (uploadedImageType === 'image/jpeg') {
-                //         if (!data.option) {
-                //             data.option = {};
-                //         }
+                    //     if (uploadedImageType === 'image/jpeg') {
+                    //         if (!data.option) {
+                    //             data.option = {};
+                    //         }
 
-                //         data.option.fillColor = '#fff';
-                //     }
+                    //         data.option.fillColor = '#fff';
+                    //     }
 
-                //     break;
+                    //     break;
             }
 
-             result = cropper[data.method](data.option, data.secondOption);
+            result = cropper[data.method](data.option, data.secondOption);
 
             switch (data.method) {
                 case 'rotate':
@@ -210,9 +210,9 @@ window.onload = function() {
                         // Bootstrap's Modal
                         // $('#getCroppedCanvasModal').find('.img-crop').html(result);
                         console.log(result);
-                        var c=document.createElement("img");
+                        var c = document.createElement("img");
                         c.src = result.toDataURL("image/png");
-                         $('.img-crop').append('<img id="imgmain" src='+c.src+'>');
+                        $('.img-crop').append('<img id="imgmain" src=' + c.src + '>');
                         //   if (!download.disabled) {
                         //       download.href = result.toDataURL(uploadedImageType);
                         //   }
@@ -480,26 +480,26 @@ window.onload = function() {
 
                     break;
 
-                // case 'destroy':
-                //     cropper = null;
+                    // case 'destroy':
+                    //     cropper = null;
 
-                //     if (uploadedImageURL) {
-                //         URL.revokeObjectURL(uploadedImageURL);
-                //         uploadedImageURL = '';
-                //         image.src = originalImageURL;
-                //     }
-                //     if (uploadedImageURL) {
-                //         URL.revokeObjectURL(uploadedImageURL);
-                //         uploadedImageURL = '';
-                //         image1.src = originalImageURL;
-                //     }
-                //     if (uploadedImageURL) {
-                //         URL.revokeObjectURL(uploadedImageURL);
-                //         uploadedImageURL = '';
-                //         image2.src = originalImageURL;
-                //     }
+                    //     if (uploadedImageURL) {
+                    //         URL.revokeObjectURL(uploadedImageURL);
+                    //         uploadedImageURL = '';
+                    //         image.src = originalImageURL;
+                    //     }
+                    //     if (uploadedImageURL) {
+                    //         URL.revokeObjectURL(uploadedImageURL);
+                    //         uploadedImageURL = '';
+                    //         image1.src = originalImageURL;
+                    //     }
+                    //     if (uploadedImageURL) {
+                    //         URL.revokeObjectURL(uploadedImageURL);
+                    //         uploadedImageURL = '';
+                    //         image2.src = originalImageURL;
+                    //     }
 
-                //     break;
+                    //     break;
             }
 
             if (typeof result === 'object' && result !== cropper && input) {
@@ -649,4 +649,3 @@ if (window.parent && window.parent.parent) {
 
 // always overwrite window.name, in case users try to set it manually
 window.name = "result"
-
