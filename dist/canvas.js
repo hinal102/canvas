@@ -4,7 +4,7 @@ var CVS = document.getElementById('imageCanvas'),
 ctx1 = document.getElementById('imgCanvas1').getContext('2d');
 ctx2 = document.getElementById('imgCanvas2').getContext('2d');
 ctx3 = document.getElementById('imgCanvas3').getContext('2d');
-ctx4 = document.getElementById('imgCanvas4').getContext('2d');
+//ctx4 = document.getElementById('imgCanvas4').getContext('2d');
 
 
 var imageLoader = document.getElementById('inputImage');
@@ -31,10 +31,9 @@ CVS.width = 500;
 CVS.height = 600;
 
 function cropimage(e) {
-    console.log("hello")
-    // ctx.drawImage(document.getElementById('imgCanvas1'), 0, 0,450,800);
-
-    console.log("hello.....")
+    var uploadedImage = $('#innerImageContainer1 img')[0];
+    console.log(uploadedImage.height + ' ' + uploadedImage.width);
+    ctx.drawImage(uploadedImage, 168, 100, uploadedImage.width + 5, uploadedImage.height + 5);
 }
 
 function handleImage2(e) {
