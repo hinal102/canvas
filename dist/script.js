@@ -209,10 +209,13 @@ window.onload = function() {
                     if (result) {
                         // Bootstrap's Modal
                         // $('#getCroppedCanvasModal').find('.img-crop').html(result);
-                        console.log(result);
                         var c = document.createElement("img");
                         c.src = result.toDataURL("image/png");
-                        $('.img-crop').append('<img id="imgmain" src=' + c.src + '>');
+                        $('.img-crop').append('<img id="imgmain" src=' + c.src + '>').ready(function() {
+                            var ctx = document.getElementById('imageCanvas').getContext('2d');
+                            var uploadedImage = $('#mainimg').find('img')[0];
+                            ctx.drawImage(uploadedImage, 168, 100, 226, 226 * uploadedImage.height / uploadedImage.width);
+                        });
                         //   if (!download.disabled) {
                         //       download.href = result.toDataURL(uploadedImageType);
                         //   }

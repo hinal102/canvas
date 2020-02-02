@@ -31,9 +31,6 @@ CVS.width = 500;
 CVS.height = 600;
 
 function cropimage(e) {
-    var uploadedImage = $('#innerImageContainer1 img')[0];
-    console.log(uploadedImage.height + ' ' + uploadedImage.width);
-    ctx.drawImage(uploadedImage, 168, 100, uploadedImage.width + 5, uploadedImage.height + 5);
 }
 
 function handleImage2(e) {
