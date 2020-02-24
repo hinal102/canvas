@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <title>cardsplug</title>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <meta name="robots" content="noindex, nofollow">
+      <meta name="googlebot" content="noindex, nofollow">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.js" integrity="sha256-xJmpNKOkERNGmTyEfRsOzTCSlfstPw5XudROyqxzLhc=" crossorigin="anonymous"></script>
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.js"></script>
+      <script type="text/javascript" src="canvas-script.js"></script>
+      <link rel="stylesheet" href="./css/style.css" />
+   </head>
+   <body>
+      <img src="TOTY.png" data-canvas-image-original style="display:none;" />
+      
+      <!-- Content -->
+      <div style="padding:'50px 0px">
+         <!-- Content -->
+         <div class="container">
+            <div class="row" id="actions">
+               <div class="btn-group btn-group-crop">
+               </div>
+               <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                           <div className="container">
+                              <div class="row" id="actions">
+                                 <div class="col-lg-12 docs-buttons">
+                                    <div class="btn-group">
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                       <span class="fa fa-search-plus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                       <span class="fa fa-search-minus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                       <span class="fa fa-rotate-left"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                                       <span class="docs-tooltip">
+                                       <span class="fa fa-rotate-right"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="" data-dismiss="modal">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-trash"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" id="cropimage" class="close" data-dismiss="modal" aria-label="Close" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                       <span class="docs-tooltip fa fa-check" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                       </span>
+                                       </button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div className="container">
+                              <div className="row" style="display:flex">
+                                 <div class="col-md-6">
+                                    <div class="docs-preview clearfix">
+                                       <div class="img-preview preview-lg">
+                                          <canvas id="mainimgCanvas" class="imgcanvaswrap1" width="500" height="600">
+                                             <canvas id="canvasID"></canvas>
+                                          </canvas>
+                                          <div id="innerImageContainer1" class="img-inner-preview">
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="img-container">
+                                       <img src="" id="image" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal fade" id="myModalFlag">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                           <div className="container">
+                              <div className="row">
+                                 <div class="col-lg-12 docs-buttons1">
+                                    <div class="btn-group">
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                       <span class="fa fa-search-plus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                       <span class="fa fa-search-minus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                       <span class="fa fa-rotate-left"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                                       <span class="docs-tooltip">
+                                       <span class="fa fa-rotate-right"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="" data-dismiss="modal">
+                                       <span class="docs-tooltip">
+                                       <span class="fa fa-trash"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                       <span class="docs-tooltip fa fa-check" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                       </span>
+                                       </button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div className="container">
+                              <div className="row" style="display:flex;">
+                                 <div class="col-md-6">
+                                    <div class="docs-preview clearfix">
+                                       <div class="img-preview preview-lg">
+                                          <canvas id="flagimgCanvas" class="imgcanvaswrap1" width="500" height="600">
+                                             <canvas id="canvasID"></canvas>
+                                          </canvas>
+                                          <div class="img-inner-preview flag-preview">
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="img-container">
+                                       <img src="" id="image1" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal fade" id="myModalBadge">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                           <div className="container">
+                              <div className="row">
+                                 <div class="col-lg-12 docs-buttons2">
+                                    <div class="btn-group">
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                       <span class="fa fa-search-plus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                       <span class="fa fa-search-minus"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                       <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                       <span class="fa fa-rotate-left"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="btn btn-primary " data-method="rotate" data-option="45" title="Rotate Right">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-rotate-right"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="" data-dismiss="modal">
+                                       <span class="docs-tooltip" >
+                                       <span class="fa fa-trash"></span>
+                                       </span>
+                                       </button>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                       <span class="docs-tooltip fa fa-check" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                       </span>
+                                       </button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div className="container">
+                              <div className="row" style="display:flex;">
+                                 <div class="col-md-6">
+                                    <div class="docs-preview clearfix">
+                                       <div class="img-preview preview-lg">
+                                          <canvas id="badgeimgCanvas" class="imgcanvaswrap1" width="500" height="600">
+                                             <canvas id="canvasID"></canvas>
+                                          </canvas>
+                                          <div class="img-inner-preview badge-preivew">
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="img-container">
+                                       <img src="" id="image2" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Modal footer -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Footer -->
+         <section class="headerTopWrapper">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="page-wrap">
+                        <div class="controls">
+                           <div id="canvas-wrap">
+                              <img src="./TOTY.png " width="450px" height="600px" class="img-wrap" />
+                              <img id="your_uploaded_image" src="">
+                              <canvas id="imageCanvas"  class="imgcanvaswrap" width="500" height="600">
+                              </canvas>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <form>
+                        <div class="row">
+                           <div class="form-group col-md-12">
+                              <label class="" for="inputImage">Upload Your Image</label>
+                              <input type="file" id="inputImage" class="form-control" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" data-toggle="modal" data-target="#myModal">
+                              <div class=" docs-cropped" id="getCroppedCanvasModal">
+                                 <div class="img-crop" id="mainimg"></div>
+                                 <!-- <input type="button" id="removeImage1" value="x" class="btn-rmv1" /> -->
+                              </div>
+                           </div>
+                           <span class="fa fa-trash" id="reset"></span>
+                           <div class="col-md-4">
+                              <label for="pwd">Name</label>
+                              <input type="text" 
+                                    name="name" 
+                                    class="form-control" 
+                                    placeholder="YOUR NAME" 
+                                    id="name"
+                                    data-canvas-element
+                                    data-canvas-id="your_name"
+                                    data-canvas-type="text" >
+                           </div>
+                           <div class="col-md-4">
+                              <label for="pwd">Rating</label>
+                              <input type="text" 
+                              class="form-control" 
+                              placeholder="99" 
+                              id="rating"
+                              data-canvas-element
+                              data-canvas-id="rating"
+                              data-canvas-type="number">
+                           </div>
+                           <div class="col-md-4">
+                              <label for="pwd">Position</label>
+                              <input type="text" 
+                              class="form-control" 
+                              placeholder="CAM" 
+                              id="position"
+                              data-canvas-element
+                              data-canvas-id="position"
+                              data-canvas-type="text">
+                           </div>
+                           <br/>
+                           <div class="form-group col-md-12">
+                              <label class="" for="inputImageFlag">Upload Your Flag</label>
+                              <input type="file" id="inputImageFlag" class="form-control" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" data-toggle="modal" data-target="#myModalFlag">
+                              <div class=" docs-cropped" id="getCroppedCanvasModal">
+                                 <div class="img-crop1" id="mainimg1"></div>
+                              </div>
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <label for="pwd">COUNTRY FLAG</label>
+                              <select id="dropdown" data-canvas-element
+                              data-canvas-id="your_flag"
+                              >
+                                 <option value='' disabled="disabled" selected="selected">Please Select</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed2.jpg'class="abc">Option 1</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed1.jpg'>Option 2</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed3.jpg'>Option 3</option>
+                              </select>
+                           </div>
+                           <div class="form-group col-md-12">
+                              <label class="" for="inputImageBadge">Upload Your Badge</label>
+                              <input type="file" id="inputImageBadge" class="form-control" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" data-toggle="modal" data-target="#myModalBadge">
+                              <div class=" docs-cropped" id="getCroppedCanvasModal">
+                                 <div class="img-crop2" id="mainimg2"></div>
+                              </div>
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <label for="pwd">CLUB</label>
+                              <select id="dropdownclub">
+                                 <option value='' disabled="disabled" selected="selected">Please Select</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed2.jpg'class="abc">Option 1</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed1.jpg'>Option 2</option>
+                                 <option data-img='https://www.gettyimages.co.uk/gi-resources/images/Embed/new/embed3.jpg'>Option 3</option>
+                              </select>
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control" 
+                              placeholder="99" 
+                              id="pace"
+                              data-canvas-element
+                              data-canvas-id="pac_text"
+                              data-canvas-type="number"
+                              >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control" 
+                              placeholder="PAC" 
+                              id="pacetext"
+                              data-canvas-element
+                              data-canvas-id="pac_value"
+                              data-canvas-type="text"
+                              >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control" 
+                              placeholder="99" 
+                              id="shoot"
+                              data-canvas-element
+                              data-canvas-id="sho_text"
+                              data-canvas-type="number"
+                              >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control" 
+                              placeholder="SHO" 
+                              id="shoottext"
+                              data-canvas-element
+                              data-canvas-id="sho_value"
+                              data-canvas-type="text"
+                              >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control"
+                               placeholder="99" 
+                               id="pass"
+                               data-canvas-element
+                              data-canvas-id="pas_text"
+                              data-canvas-type="number"
+                               >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control"
+                               placeholder="PAS" 
+                               id="passtext"
+                               data-canvas-element
+                              data-canvas-id="pas_value"
+                              data-canvas-type="text"
+                               >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text"
+                               class="form-control" 
+                               placeholder="99" 
+                               id="dribbl"
+                               data-canvas-element
+                              data-canvas-id="dri_text"
+                              data-canvas-type="number"
+                               >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control"
+                               placeholder="DRI"
+                                id="dribbltext"
+                              data-canvas-element
+                              data-canvas-id="dri_value"
+                              data-canvas-type="text"
+                                >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control"
+                               placeholder="99" 
+                               id="defend"
+                               data-canvas-element
+                               data-canvas-id="def_text"
+                               data-canvas-type="number"
+                               >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text" 
+                              class="form-control"
+                               placeholder="DEF" 
+                               id="defendtext"
+                               data-canvas-element
+                               data-canvas-id="def_value"
+                               data-canvas-type="text"
+                               >
+                           </div>
+                           <div class="col-md-3">
+                              <input type="text"
+                                class="form-control"
+                                placeholder="99" 
+                                id="physical"
+                               data-canvas-element
+                               data-canvas-id="phy_text"
+                               data-canvas-type="number"
+                                >
+                           </div>
+                           <div class="col-md-3" style="padding-bottom: 10px;">
+                              <input type="text" 
+                              class="form-control" 
+                              placeholder="PHY"
+                               id="physicaltext"
+                               data-canvas-element
+                               data-canvas-id="phy_value"
+                               data-canvas-type="text"
+                               >
+                           </div>
+                           <div class="form-group col-md-12">
+                              <button type="submit" class="btn btn-warning form-control btn-padding">COMPLETE DESIGN</button>
+                           </div>
+                           <button type="button" id="own" class="btn">own</button>
+                           <button type="button" id="real" class="btn">Real</button>
+                        </div>
+                  </div>
+                  </form>
+               </div>
+            </div>
+      </div>
+      </section>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js'></script>
+   </body>
+
+   
+   </html>
